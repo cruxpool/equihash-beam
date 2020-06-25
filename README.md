@@ -7,7 +7,6 @@ Working version
 ````
 go get github.com/cruxpool/equihash-beam
 cd ~/go/src/github.com/cruxpool/equihash-beam
-cd src
 cmake .
 make
 `````
