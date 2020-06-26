@@ -6,7 +6,6 @@
 #include <iostream>
 #include "src/equihashR.h"
 #include "src/beamHashIII.h"
-#include <syslog.h>
 
 static BeamHash_III BeamHashIII;
 
@@ -38,10 +37,6 @@ int verify1(const char* input_ptr, const char* nonce64_ptr, const char* solution
 }
 int verify2(const char* input, const char* nonce, const char* output, int64_t loutput)
 {
-   setlogmask(LOG_UPTO (LOG_NOTICE));
- syslog(LOG_NOTICE, "irogram %s", input);
- syslog(LOG_NOTICE, "nrogram %s", nonce);
- syslog(LOG_NOTICE, "orogram %s", output);
 
   bool isValid = verifyPoWScheme(BeamHashII, input, nonce, output, loutput);
   if (isValid)
@@ -53,16 +48,10 @@ int verify2(const char* input, const char* nonce, const char* output, int64_t lo
     return 0;
   }
   
-    closelog();
 }
 
 int verify3(const char *input_ptr, const char *nonce64_ptr, const char *solution, int64_t loutput)
 {
-    setlogmask(LOG_UPTO (LOG_NOTICE));
- syslog(LOG_NOTICE, "irogram %s", input_ptr);
- syslog(LOG_NOTICE, "nrogram %s", nonce64_ptr);
- syslog(LOG_NOTICE, "orogram %s", solution);
-
 
 	bool isValid = verifyPoWScheme(BeamHashIII, input_ptr, nonce64_ptr, solution, loutput);
 

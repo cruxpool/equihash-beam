@@ -24,21 +24,21 @@ func VerifySolution(input, nonce, output []byte, height int ) bool {
         op := unsafe.Pointer(C.CString(oStr))
 
         if(height < 777777) {
+		log.Println("v2")
                 valid = int(C.verify2(
 			(*C.char)(ip),
                         (*C.char)(np),
                         (*C.char)(op),
 			C.int64_t(len(output)),
                 ))
-		log.Println(valid)
 	} else {
-
-		valid =int(C.verify3(
-			(*C.char)(unsafe.Pointer(&input[0])),
-	                (*C.char)(unsafe.Pointer(&nonce[0])),
-		        (*C.char)(unsafe.Pointer(&output[0])),
-			C.int64_t(len(output)),
-		))
+		log.Println("v3")
+		valid = int(C.verify3(
+                        (*C.char)(ip),
+                        (*C.char)(np),
+                        (*C.char)(op),
+                        C.int64_t(len(output)),
+                ))
 	}
 	if valid == 1 {
 		return true
