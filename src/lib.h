@@ -6,9 +6,9 @@
 extern "C" {
 #endif
 
-int verify1(const char* input, const char* nonce, const char* output);
-int verify2(const char* input, const char* nonce, const char* output);
-int verify3(const char* input, const char* nonce, const char* output);
+int verify1(const char* input, const char* nonce, const char* output, int64_t loutput);
+int verify2(const char* input, const char* nonce, const char* output, int64_t loutput);
+int verify3(const char* input, const char* nonce, const char* output, int64_t loutput);
 
 #ifdef __cplusplus
 }
